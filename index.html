@@ -1,1 +1,173 @@
-Hello World
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>SeemaPateel-Frontend Developer</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class=" collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li ><a class="active" href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div id="home" class="fullscreen" style="height: 700px; background-image: url('./images/woodPanel.jpg');">
+
+
+    <div class="descMe">
+        <h2> Welcome </h3>
+        <h1> Seema Pateel's Portfolio</h1>
+        <h2> Web page designer, frontend developer </2>
+    </div>
+</div>
+<div id="about" style="height: 500px">
+    <section id="aboutPrev" >
+    <p> I'm a self taught front end web developer with prior experience in Banking Domain.
+    </p>
+    <p>
+        I was a Technical Team Lead before I decided to experience being a Mom.
+    </p>
+    </section>
+    <section id="aboutNow">
+    <p> Now I am back with more vigor to do what I loved to do most when at my desk. Design and develop web based application.
+    </p>
+    </section>
+    <section class="skills">
+        <p> I have been practicing JavaScript, NodeJS, HTML, CSS, AngularJS on <a href="http://freecodecamp.com">freecodecamp</a> to complete their frontend certification</p>
+    </section>
+</div>
+<div id="projects">
+<div class="container">
+<section>
+    <h3 align="center" style="color: #ffffff;">Beginner Projects</h3>
+    <div class="row">
+        <div class="col-md-6 item">
+            <a href="https://seemapateel.github.io/">
+                <image src="./images/seemapateel.png" width="300" height="250" alt="seemapateel.github.io/"></image>
+            </a>
+            <footer>
+                <span>
+                    <a href="https://seemapateel.github.io/">SeemaPateel</a>
+                </span>
+            </footer>
+        </div>
+        <div class="col-md-6 item">
+            <a href="http://codepen.io/seemapateel/full/KVMZob/">
+                <image src="./images/basicCalc.jpg" width="300" height="250" alt="http://codepen.io/seemapateel/full/KVMZob//"></image>
+            </a>
+            <footer>
+                <span>
+                    <a href="http://codepen.io/seemapateel/full/KVMZob/">Basic Calculator</a>
+                </span>
+            </footer>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 item">
+            <a href="http://codepen.io/seemapateel/full/KVwrbK/">
+                <image src="./images/pomodoroClock.jpg" width="300" height="250" alt="http://codepen.io/seemapateel/full/KVwrbK//"></image>
+            </a>
+            <footer>
+                <span>
+                    <a href="http://codepen.io/seemapateel/full/KVwrbK/">Pomodoro Clock</a>
+                </span>
+            </footer>
+        </div>
+        <div class="col-md-6 item">
+            <a href="http://codepen.io/seemapateel/full/vLYoVB/">
+                <image src="./images/quoteGen.jpg" width="300" height="250" alt="http://codepen.io/seemapateel/full/vLYoVB//"></image>
+            </a>
+            <footer>
+                <span>
+                    <a href="http://codepen.io/seemapateel/full/vLYoVB/">Random Quote Generator</a>
+                </span>
+            </footer>
+        </div>
+    </div>
+</section>
+</div>
+</div>
+<div id="contact" class="container">
+    <h3 align="center"><strong> Reach me via </strong></h3>
+    <hr>
+    <div class="row">
+    <div class="col-md-4">
+        <a href="https://github.com/seemapateel" >
+            <img src="images/githubIcon.png">
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="http://www.linkedin.com/in/seemapateel" >
+            <img src="images/linkedIn.png">
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="mailto:seemapateel-portfolio@gmail.com" >
+            <img src="images/mailto.png">
+        </a>
+    </div>
+    </div>
+    <hr>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(document).on("scroll", onScroll);
+
+        //smoothscroll
+        $('a[href^="#"]').on('click', function (e) {
+            e.preventDefault();
+            $(document).off("scroll");
+
+            $('a').each(function () {
+                $(this).removeClass('active');
+            })
+            $(this).addClass('active');
+
+            var target = this.hash;
+            $target = $(target);
+            $('html, body').stop().animate({
+                'scrollTop': $target.offset().top+2
+            }, 500, 'swing', function () {
+                window.location.hash = target;
+                $(document).on("scroll", onScroll);
+            });
+        });
+    });
+
+    function onScroll(event){
+        var scrollPos = $(document).scrollTop();
+        $('nav a').each(function () {
+            var currLink = $(this);
+            var refElement = $(currLink.attr("href"));
+            if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+                $('nav ul li a').removeClass("active");
+                currLink.addClass("active");
+            }
+            else{
+                currLink.removeClass("active");
+            }
+        });
+    }
+</script>
+</body>
+</html>
